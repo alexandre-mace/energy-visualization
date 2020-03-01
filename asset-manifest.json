@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/energy-visualization/static/css/main.0f1ca384.chunk.css",
+    "main.js": "/energy-visualization/static/js/main.ce2d0f0b.chunk.js",
+    "main.js.map": "/energy-visualization/static/js/main.ce2d0f0b.chunk.js.map",
+    "runtime-main.js": "/energy-visualization/static/js/runtime-main.493c6151.js",
+    "runtime-main.js.map": "/energy-visualization/static/js/runtime-main.493c6151.js.map",
+    "static/js/2.52a7ed09.chunk.js": "/energy-visualization/static/js/2.52a7ed09.chunk.js",
+    "static/js/2.52a7ed09.chunk.js.map": "/energy-visualization/static/js/2.52a7ed09.chunk.js.map",
+    "index.html": "/energy-visualization/index.html",
+    "precache-manifest.00e20c5aed9138386737a2008819c29e.js": "/energy-visualization/precache-manifest.00e20c5aed9138386737a2008819c29e.js",
+    "service-worker.js": "/energy-visualization/service-worker.js",
+    "static/css/main.0f1ca384.chunk.css.map": "/energy-visualization/static/css/main.0f1ca384.chunk.css.map",
+    "static/js/2.52a7ed09.chunk.js.LICENSE.txt": "/energy-visualization/static/js/2.52a7ed09.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.493c6151.js",
+    "static/js/2.52a7ed09.chunk.js",
+    "static/css/main.0f1ca384.chunk.css",
+    "static/js/main.ce2d0f0b.chunk.js"
+  ]
+}
