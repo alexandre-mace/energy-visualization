@@ -15,6 +15,11 @@
   bottom: 15px;
   right: 15px;
 }
+.info-button {
+  position: fixed !important;
+  top: 15px;
+  right: 15px;
+}
 .MuiPopover-paper {
   padding: 1rem !important;
 }

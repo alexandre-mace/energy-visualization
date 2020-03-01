@@ -9,6 +9,7 @@ import getCountryDelta from "./utils/getCountryDelta";
 import consumption from './data/consumption2015.json'
 import production from './data/production2015.json';
 import Filters from "./components/Filters";
+import ComplementaryInformation from "./components/ComplementaryInformation";
 
 // Purify data
 let purifiedConsumptionData = purifyConsumption(consumption);
@@ -65,6 +66,7 @@ function App() {
 
     return (
         <div className="App">
+            <ComplementaryInformation/>
             <div className={"chart-title mt-0"}>Energy production by countries</div>
             <Doughnut data={productionData} />
             <div className={"chart-title"}>Energy consumption by countries</div>
