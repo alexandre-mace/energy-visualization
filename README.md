@@ -1,6 +1,6 @@
 # Energy visualization
 
-Energy visualization for the year of 2018
+Country energy consumption and production visualization for the year of 2015.
 
 ## Sources 
  * Production https://data.open-power-system-data.org/national_generation_capacity/
