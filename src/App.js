@@ -15,7 +15,7 @@ let purifiedProductionData = purifyProduction(production);
 
 // Filter data to harmonize country data sets
 const colors = purifiedConsumptionData.map(() => getRandomColor());
-const countryDelta = getCountryDelta(purifiedProductionData, purifiedConsumptionData)
+const countryDelta = getCountryDelta(purifiedProductionData, purifiedConsumptionData);
 purifiedConsumptionData = purifiedConsumptionData.filter(data => !countryDelta.includes(data.country));
 purifiedProductionData = purifiedProductionData.filter(data => !countryDelta.includes(data.country));
 
