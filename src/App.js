@@ -1,34 +1,25 @@
 import React from 'react';
 import './App.css';
 import { Doughnut } from 'react-chartjs-2';
-import production from './data/production2015.json';
-import consumption from './data/consumption2015.json'
 import getRandomColor from "./utils/getRandomColor";
 import purifyProduction from "./purifiers/purifyProduction";
 import purifyConsumption from "./purifiers/purifyConsumption";
+import getCountryDelta from "./utils/getCountryDelta";
+// Import data
+import consumption from './data/consumption2015.json'
+import production from './data/production2015.json';
 
+// Purify data
 let purifiedConsumptionData = purifyConsumption(consumption);
 let purifiedProductionData = purifyProduction(production);
 
+// Filter data to harmonize country data sets
 const colors = purifiedConsumptionData.map(() => getRandomColor());
-
-const countryDeltaFirstBatch = purifiedProductionData.map(data => {
-    if (!purifiedConsumptionData.find(dataConsumption => (dataConsumption.country === data.country))) {
-        return data.country
-    }
-}).filter(data => data !== undefined);
-
-const countryDeltaSecondBatch = purifiedConsumptionData.map(data => {
-    if (!purifiedProductionData.find(dataProduction => (dataProduction.country === data.country))) {
-        return data.country
-    }
-}).filter(data => data !== undefined);
-
-const countryDelta = countryDeltaFirstBatch.concat(countryDeltaSecondBatch);
-
+const countryDelta = getCountryDelta(purifiedProductionData, purifiedConsumptionData)
 purifiedConsumptionData = purifiedConsumptionData.filter(data => !countryDelta.includes(data.country));
 purifiedProductionData = purifiedProductionData.filter(data => !countryDelta.includes(data.country));
 
+// Create chartjs data for both datasets
 const productionData = {
     labels: purifiedProductionData.map(data => data.country)
     ,
