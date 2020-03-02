@@ -1,7 +1,6 @@
 import Button from "@material-ui/core/Button";
 import InfoIcon from '@material-ui/icons/Info';
 import Popover from "@material-ui/core/Popover";
-import {FormControlLabel, Switch} from "@material-ui/core";
 import React from "react";
 
 const ComplementaryInformation = () => {
