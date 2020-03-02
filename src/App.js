@@ -11,6 +11,12 @@ import production from './data/production.json'
 import Filters from "./components/Filters";
 import ComplementaryInformation from "./components/ComplementaryInformation";
 import filterCountriesDataset from "./utils/filterCountriesDataset";
+import Tabs from '@material-ui/core/Tabs';
+import LinkTab from "./components/LinkTab";
+import a11yProps from "./utils/allyProps";
+import TabPanel from "./components/TabPanel";
+import generateChartJsData from "./utils/generateChartJsData";
+import generateChartJsMergedData from "./utils/generateChartJsMergedData";
 
 // Purify data
 let purifiedProductionData = purifyProduction(production);
@@ -23,6 +29,7 @@ function App() {
     const [filterTop10Producers, setFilterTop10Producers] = React.useState(false);
     const [filterTop10Consumers, setFilterTop10Consumers] = React.useState(false);
     const [currentYear, setCurrentYear] = React.useState("2018");
+    const [appMode, setAppMode] = React.useState(0);
 
     const filteredData = filterCountriesDataset(purifiedProductionData, purifiedConsumptionData, currentYear, filterTop10Producers, filterTop10Consumers);
 
@@ -40,67 +47,52 @@ function App() {
         setCurrentYear(event.target.value)
     };
 
+    const handleAppModeChange = (event, newValue) => {
+        setAppMode(newValue);
+    };
+
     // Create chartjs data for both datasets
-    const mergedData = {
-        labels: (filterTop10Consumers)
-                    ? filteredData.consumers.map(data => data.country)
-                    : filteredData.producers.map(data => data.country)
-        ,
-        datasets: [
-            {
-                label: "Energy production (MTOE)",
-                data: filteredData.producers.map(data => data.years[currentYear]),
-                backgroundColor: 'rgba(99, 132, 0, 0.6)',
-                borderWidth: 0,
-            },
-            {
-                label: "Energy consumption (MTOE)",
-                data: filteredData.consumers.map(data => data.years[currentYear]),
-                backgroundColor: 'rgba(0, 99, 132, 0.6)',
-                borderWidth: 0,
-            }
-        ]
-    };
-    const productionData = {
-        labels: filteredData.producers.map(data => data.country)
-        ,
-        datasets: [{
-            data: filteredData.producers.map(data => data.years[currentYear]),
-            backgroundColor: colors,
-            hoverBackgroundColor: colors
-        }]
-    };
-    const consumptionData = {
-        labels: filteredData.consumers.map(data => data.country)
-        ,
-        datasets: [{
-            data: filteredData.consumers.map(data => data.years[currentYear]),
-            backgroundColor: colors,
-            hoverBackgroundColor: colors
-        }]
-    };
+    const productionData = generateChartJsData(filteredData.producers, currentYear, colors);
+    const consumptionData = generateChartJsData(filteredData.consumers, currentYear, colors);
+    const mergedData = generateChartJsMergedData(filterTop10Consumers, filteredData.producers, filteredData.consumers, currentYear);
 
     return (
         <div className="App">
+            <Tabs
+                centered
+                value={appMode}
+                onChange={handleAppModeChange}
+                aria-label="nav tabs example"
+                indicatorColor="primary"
+                textColor="primary"
+            >
+                <LinkTab label="World"  {...a11yProps(0)} />
+                <LinkTab label="Single country"  {...a11yProps(1)} />
+            </Tabs>
+            <TabPanel value={appMode} index={0}>
+                <div className={"chart-title mt-0"}>Energy production by countries (Millions of tonnes of oil equivalent)</div>
+                <Doughnut data={productionData} />
+                <div className={"chart-title"}>Energy consumption by countries (Millions of tonnes of oil equivalent)</div>
+                <Doughnut data={consumptionData} />
+                <div className={"chart-title"}>Merged diagrams</div>
+                <Bar
+                    data={mergedData}
+                    width={100}
+                    height={50}
+                    options={{
+                        scales: {
+                            xAxes: [{
+                                barPercentage: 1,
+                                categoryPercentage: 1
+                            }],
+                        }
+                    }}
+                />
+            </TabPanel>
+            <TabPanel value={appMode} index={1}>
+                Page Two
+            </TabPanel>
             <ComplementaryInformation/>
-            <div className={"chart-title mt-0"}>Energy production by countries (Millions of tonnes of oil equivalent)</div>
-            <Doughnut data={productionData} />
-            <div className={"chart-title"}>Energy consumption by countries (Millions of tonnes of oil equivalent)</div>
-            <Doughnut data={consumptionData} />
-            <div className={"chart-title"}>Merged diagrams</div>
-            <Bar
-                data={mergedData}
-                width={100}
-                height={50}
-                options={{
-                    scales: {
-                        xAxes: [{
-                            barPercentage: 1,
-                            categoryPercentage: 1
-                        }],
-                    }
-                }}
-            />
             <Filters
                 years={years}
                 currentYear={currentYear}

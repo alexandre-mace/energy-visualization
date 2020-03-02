@@ -22,8 +22,8 @@ const ComplementaryInformation = () => {
 
     return (
         <>
-            <Button aria-describedby={id} className={"h-100 info-button"} variant="contained" color="primary" onClick={handleClick}>
-                <InfoIcon/>
+            <Button size={"large"} aria-describedby={id} className={"h-100 info-button"} variant="contained" color="primary" onClick={handleClick}>
+                <InfoIcon fontSize={"large"}/>
             </Button>
             <div className="info-container">
                 <Popover
@@ -43,10 +43,10 @@ const ComplementaryInformation = () => {
                     }}
                 >
                     <div className={"p-3"}>
-                        This is a visualization of country energy production and consumption for the year of 2015 <br/><br/>
+                        This is a visualization of country energy production and consumption<br/><br/>
                         Sources : <br/>
-                        <a href="https://data.open-power-system-data.org/national_generation_capacity/">Production</a> <br/>
-                        <a href="https://data.europa.eu/euodp/en/data/dataset/Jat1A5cjQ2XK3Yq7cv779g">Consumption</a>
+                        <a href="https://yearbook.enerdata.net/total-energy/world-energy-production.html">Production</a> <br/>
+                        <a href="https://yearbook.enerdata.net/total-energy/world-consumption-statistics.html">Consumption</a>
                     </div>
                 </Popover>
             </div>

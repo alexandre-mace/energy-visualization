@@ -27,8 +27,8 @@ const Filters = ({ years, currentYear, handleYearChange, filterTop10Producers, f
 
     return (
         <>
-            <Button aria-describedby={id} className={"h-100 settings-button"} variant="contained" color="primary" onClick={handleClick}>
-                <TuneIcon/>
+            <Button size={"large"} aria-describedby={id} className={"h-100 settings-button"} variant="contained" color="primary" onClick={handleClick}>
+                <TuneIcon fontSize={"large"}/>
             </Button>
             <div className="settings-container">
                 <Popover
