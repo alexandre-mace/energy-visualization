@@ -8,7 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const Filters = ({ years, currentYear, handleYearChange, filterTop10Producers, filterTop10Consumers, handleFilterTop10ProducersChange, handleFilterTop10ConsumersChange }) => {
+const Filters = ({ singleCountry, handleSingleCountryChange, countries, years, currentYear, handleYearChange, filterTop10Producers, filterTop10Consumers, handleFilterTop10ProducersChange, handleFilterTop10ConsumersChange }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = event => {
@@ -72,7 +72,20 @@ const Filters = ({ years, currentYear, handleYearChange, filterTop10Producers, f
                                 <Switch checked={filterTop10Consumers} onChange={handleFilterTop10ConsumersChange} value="hidden" color="primary" />
                             }
                             label="Filter top 10 consumers"
-                        />
+                        /><br/>
+                        <FormControl>
+                            <InputLabel id="demo-simple-select-label">Single country</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={singleCountry}
+                                onChange={handleSingleCountryChange}
+                            >
+                                {countries.map((year, index) => (
+                                    <MenuItem key={index} value={year}>{year}</MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl><br/>
                     </div>
                 </Popover>
             </div>

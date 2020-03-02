@@ -1,0 +1,50 @@
+export default function generateChartJsMergedData(producerDataset, consumerDataset) {
+    return {
+        labels: Object.keys(producerDataset.years),
+        datasets: [
+            {
+                label: "Energy production (MTOE)",
+                data: Object.keys(producerDataset.years).map(year => producerDataset.years[year]),
+                backgroundColor: 'rgba(99, 132, 0, 0.6)',
+                lineTension: 0.1,
+                borderColor: 'rgba(99, 132, 0, 0.6)',
+                borderCapStyle: 'butt',
+                borderWidth: 3,
+                fill: false,
+                borderJoinStyle: 'miter',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                pointBorderColor: 'rgba(99, 132, 0, 0.6)',
+                pointBackgroundColor: 'rgba(99, 132, 0, 0.6)',
+                pointBorderWidth: 6,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(99, 132, 0, 0.6)',
+                pointHoverBorderColor: 'rgba(99, 132, 0, 0.6)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+            },
+            {
+                label: "Energy consumption (MTOE)",
+                data: Object.keys(consumerDataset.years).map(year => consumerDataset.years[year]),
+                backgroundColor: 'rgba(0, 99, 132, 0.6)',
+                lineTension: 0.1,
+                borderColor: 'rgba(0, 99, 132, 0.6)',
+                borderCapStyle: 'butt',
+                borderWidth: 3,
+                fill: false,
+                borderJoinStyle: 'miter',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                pointBorderColor: 'rgba(0, 99, 132, 0.6)',
+                pointBackgroundColor: 'rgba(0, 99, 132, 0.6)',
+                pointBorderWidth: 6,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(0, 99, 132, 0.6)',
+                pointHoverBorderColor: 'rgba(0, 99, 132, 0.6)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,            }
+        ]
+    };
+}
