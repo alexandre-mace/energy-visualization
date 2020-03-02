@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Doughnut } from 'react-chartjs-2';
+import {Bar, Doughnut} from 'react-chartjs-2';
 import getRandomColor from "./utils/getRandomColor";
 import purifyProduction from "./purifiers/purifyProduction";
 import purifyConsumption from "./purifiers/purifyConsumption";
@@ -45,6 +45,26 @@ function App() {
     };
 
     // Create chartjs data for both datasets
+    const mergedData = {
+        labels: filteredProductionData.map(data => data.country)
+        ,
+        datasets: [
+            {
+                label: "Energy production (Mw)",
+                data: filteredProductionData.map(data => data.capacity),
+                backgroundColor: 'rgba(99, 132, 0, 0.6)',
+                borderWidth: 0,
+                yAxisID: "y-axis-production"
+            },
+            {
+                label: "Energy consumption (MTOE)",
+                data: filteredConsumptionData.map(data => data.consumption),
+                backgroundColor: 'rgba(0, 99, 132, 0.6)',
+                borderWidth: 0,
+                yAxisID: "y-axis-consumption"
+            }
+        ]
+    };
     const productionData = {
         labels: filteredProductionData.map(data => data.country)
         ,
@@ -71,6 +91,28 @@ function App() {
             <Doughnut data={productionData} />
             <div className={"chart-title"}>Energy consumption by countries (Millions of tonnes of oil equivalent (Mtoe))</div>
             <Doughnut data={consumptionData} />
+            <div className={"chart-title"}>Merged diagrams</div>
+            <Bar
+                data={mergedData}
+                width={100}
+                height={50}
+                options={{
+                    scales: {
+                        xAxes: [{
+                            barPercentage: 1,
+                            categoryPercentage: 1
+                        }],
+                        yAxes: [
+                            {
+                                id: "y-axis-production"
+                            },
+                            {
+                                id: "y-axis-consumption"
+                            }
+                        ]
+                    }
+                }}
+            />
             <Filters
                 filterTop10={filterTop10}
                 handleFilterTop10Change={handleFilterTop10Change}
