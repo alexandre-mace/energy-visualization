@@ -67,9 +67,9 @@ function App() {
     return (
         <div className="App">
             <ComplementaryInformation/>
-            <div className={"chart-title mt-0"}>Energy production by countries</div>
+            <div className={"chart-title mt-0"}>Energy production by countries (Megawatts (Mw))</div>
             <Doughnut data={productionData} />
-            <div className={"chart-title"}>Energy consumption by countries</div>
+            <div className={"chart-title"}>Energy consumption by countries (Millions of tonnes of oil equivalent (Mtoe))</div>
             <Doughnut data={consumptionData} />
             <Filters
                 filterTop10={filterTop10}
