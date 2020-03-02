@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const Filters = ({
+                     appMode,
                      singleCountry,
                      handleSingleCountryChange,
                      countries,
@@ -59,31 +60,36 @@ const Filters = ({
                     }}
                 >
                     <div className={"p-3"}>
-                        <FormControl>
-                            <InputLabel id="demo-simple-select-label">Year</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={currentYear}
-                                onChange={handleYearChange}
-                            >
-                                {years.map((year, index) => (
-                                    <MenuItem key={index} value={year}>{year}</MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl><br/>
-                        <FormControlLabel
-                            control={
-                                <Switch checked={filterTop10Producers} onChange={handleFilterTop10ProducersChange} value="hidden" color="primary" />
-                            }
-                            label="Filter top 10 producers"
-                        /><br/>
-                        <FormControlLabel
-                            control={
-                                <Switch checked={filterTop10Consumers} onChange={handleFilterTop10ConsumersChange} value="hidden" color="primary" />
-                            }
-                            label="Filter top 10 consumers"
-                        /><br/>
+                        {appMode === 0 &&
+                        <>
+                            <FormControl>
+                                <InputLabel id="demo-simple-select-label">Year</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={currentYear}
+                                    onChange={handleYearChange}
+                                >
+                                    {years.map((year, index) => (
+                                        <MenuItem key={index} value={year}>{year}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl><br/>
+                            <FormControlLabel
+                                control={
+                                    <Switch checked={filterTop10Producers} onChange={handleFilterTop10ProducersChange} value="hidden" color="primary" />
+                                }
+                                label="Filter top 10 producers"
+                            /><br/>
+                            <FormControlLabel
+                                control={
+                                    <Switch checked={filterTop10Consumers} onChange={handleFilterTop10ConsumersChange} value="hidden" color="primary" />
+                                }
+                                label="Filter top 10 consumers"
+                            /><br/>
+                        </>
+                        }
+                        {appMode === 1 &&
                         <FormControl>
                             <InputLabel id="demo-simple-select-label">Single country</InputLabel>
                             <Select
@@ -96,7 +102,8 @@ const Filters = ({
                                     <MenuItem key={index} value={year}>{year}</MenuItem>
                                 ))}
                             </Select>
-                        </FormControl><br/>
+                        </FormControl>
+                        }
                     </div>
                 </Popover>
             </div>

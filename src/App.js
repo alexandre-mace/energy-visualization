@@ -98,6 +98,7 @@ function App() {
 
             <ComplementaryInformation/>
             <Filters
+                appMode={appMode}
                 singleCountry={singleCountry}
                 handleSingleCountryChange={handleSingleCountryChange}
                 countries={countries}
