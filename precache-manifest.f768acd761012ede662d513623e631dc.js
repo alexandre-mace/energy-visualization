@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b7d5356cb128e6d0c2b484ee028a229a",
+    "revision": "47dfa298e4a5f98bcce3dd7afb479649",
     "url": "/energy-visualization/index.html"
   },
   {
-    "revision": "c4af1d4625881016ec8c",
+    "revision": "feb899cd37be20a48f0a",
     "url": "/energy-visualization/static/css/main.0f1ca384.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/energy-visualization/static/js/2.c17dafed.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c4af1d4625881016ec8c",
-    "url": "/energy-visualization/static/js/main.41a30714.chunk.js"
+    "revision": "feb899cd37be20a48f0a",
+    "url": "/energy-visualization/static/js/main.19dbfa66.chunk.js"
   },
   {
     "revision": "f5bbc14aa27513b83447",
