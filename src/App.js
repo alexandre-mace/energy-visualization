@@ -1,13 +1,7 @@
 import React from 'react';
 import './App.css';
-import {Bar, Doughnut, Line} from 'react-chartjs-2';
 import getRandomColor from "./utils/getRandomColor";
-import purifyProduction from "./purifiers/purifyProduction";
-import purifyConsumption from "./purifiers/purifyConsumption";
-
-// Import data
-import consumption from './data/consumption.json'
-import production from './data/production.json'
+import purifyDataset from "./purifiers/purifyDataset";
 import Filters from "./components/Filters";
 import ComplementaryInformation from "./components/ComplementaryInformation";
 import filterCountriesDataset from "./utils/filterCountriesDataset";
@@ -18,13 +12,20 @@ import TabPanel from "./components/TabPanel";
 import generateChartJsData from "./utils/generateChartJsData";
 import generateChartJsMergedData from "./utils/generateChartJsMergedData";
 import generateChartJsSingleCountryData from "./utils/generateChartJsSingleCountryData";
+import WorldVisualization from "./components/WorldVisualization";
+import SingleCountryVisualization from "./components/SingleCountryVisualization";
+
+// Import data
+import consumption from './data/consumption.json'
+import production from './data/production.json'
 
 // Purify data
-let purifiedProductionData = purifyProduction(production);
-let purifiedConsumptionData = purifyConsumption(consumption);
+let purifiedProductionData = purifyDataset(production);
+let purifiedConsumptionData = purifyDataset(consumption);
 
-const colors = purifiedConsumptionData.map(() => getRandomColor());
+// Generate diagram extra data
 const years = Object.keys(production[0].years);
+const colors = purifiedConsumptionData.map(() => getRandomColor());
 const countries = purifiedProductionData.map(data => data.country);
 
 function App() {
@@ -64,10 +65,12 @@ function App() {
     const mergedData = generateChartJsMergedData(filterTop10Consumers, filteredData.producers, filteredData.consumers, currentYear);
     const singleCountryData = generateChartJsSingleCountryData(
         purifiedProductionData.find(producer => producer.country === singleCountry),
-        purifiedConsumptionData.find(producer => producer.country === singleCountry));
+        purifiedConsumptionData.find(producer => producer.country === singleCountry)
+    );
 
     return (
         <div className="App">
+
             <Tabs
                 centered
                 value={appMode}
@@ -80,29 +83,19 @@ function App() {
                 <LinkTab label="Single country"  {...a11yProps(1)} />
             </Tabs>
             <TabPanel value={appMode} index={0}>
-                <div className={"chart-title"}>Energy production by countries (Millions of tonnes of oil equivalent)</div>
-                <Doughnut data={productionData} />
-                <div className={"chart-title"}>Energy consumption by countries (Millions of tonnes of oil equivalent)</div>
-                <Doughnut data={consumptionData} />
-                <div className={"chart-title"}>Merged diagrams</div>
-                <Bar
-                    data={mergedData}
-                    width={100}
-                    height={50}
-                    options={{
-                        scales: {
-                            xAxes: [{
-                                barPercentage: 1,
-                                categoryPercentage: 1
-                            }],
-                        }
-                    }}
+                <WorldVisualization
+                    productionData={productionData}
+                    consumptionData={consumptionData}
+                    mergedData={mergedData}
                 />
             </TabPanel>
             <TabPanel value={appMode} index={1}>
-                <div className={"chart-title"}>Energy production and consumption for {singleCountry}</div>
-                <Line data={singleCountryData} />
+                <SingleCountryVisualization
+                    singleCountry={singleCountry}
+                    singleCountryData={singleCountryData}
+                />
             </TabPanel>
+
             <ComplementaryInformation/>
             <Filters
                 singleCountry={singleCountry}

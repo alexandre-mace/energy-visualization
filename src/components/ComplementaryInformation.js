@@ -22,7 +22,7 @@ const ComplementaryInformation = () => {
 
     return (
         <>
-            <Button size={"large"} aria-describedby={id} className={"h-100 info-button"} variant="contained" color="primary" onClick={handleClick}>
+            <Button size={"large"} aria-describedby={id} className={"info-button"} variant="contained" color="primary" onClick={handleClick}>
                 <InfoIcon fontSize={"large"}/>
             </Button>
             <div className="info-container">

@@ -8,7 +8,18 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const Filters = ({ singleCountry, handleSingleCountryChange, countries, years, currentYear, handleYearChange, filterTop10Producers, filterTop10Consumers, handleFilterTop10ProducersChange, handleFilterTop10ConsumersChange }) => {
+const Filters = ({
+                     singleCountry,
+                     handleSingleCountryChange,
+                     countries,
+                     years,
+                     currentYear,
+                     handleYearChange,
+                     filterTop10Producers,
+                     filterTop10Consumers,
+                     handleFilterTop10ProducersChange,
+                     handleFilterTop10ConsumersChange
+}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = event => {
@@ -27,7 +38,7 @@ const Filters = ({ singleCountry, handleSingleCountryChange, countries, years, c
 
     return (
         <>
-            <Button size={"large"} aria-describedby={id} className={"h-100 settings-button"} variant="contained" color="primary" onClick={handleClick}>
+            <Button size={"large"} aria-describedby={id} className={"settings-button"} variant="contained" color="primary" onClick={handleClick}>
                 <TuneIcon fontSize={"large"}/>
             </Button>
             <div className="settings-container">
