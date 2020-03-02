@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/energy-visualization/static/css/main.4d5ae986.chunk.css",
-    "main.js": "/energy-visualization/static/js/main.73845c5c.chunk.js",
-    "main.js.map": "/energy-visualization/static/js/main.73845c5c.chunk.js.map",
+    "main.js": "/energy-visualization/static/js/main.d01a5652.chunk.js",
+    "main.js.map": "/energy-visualization/static/js/main.d01a5652.chunk.js.map",
     "runtime-main.js": "/energy-visualization/static/js/runtime-main.493c6151.js",
     "runtime-main.js.map": "/energy-visualization/static/js/runtime-main.493c6151.js.map",
-    "static/js/2.ae3ad4f1.chunk.js": "/energy-visualization/static/js/2.ae3ad4f1.chunk.js",
-    "static/js/2.ae3ad4f1.chunk.js.map": "/energy-visualization/static/js/2.ae3ad4f1.chunk.js.map",
+    "static/js/2.70c60d5a.chunk.js": "/energy-visualization/static/js/2.70c60d5a.chunk.js",
+    "static/js/2.70c60d5a.chunk.js.map": "/energy-visualization/static/js/2.70c60d5a.chunk.js.map",
     "index.html": "/energy-visualization/index.html",
-    "precache-manifest.6db42b5bb7f752a099f40426937e6ceb.js": "/energy-visualization/precache-manifest.6db42b5bb7f752a099f40426937e6ceb.js",
+    "precache-manifest.8cc6ea1f3c8def7774777e207c97ea7a.js": "/energy-visualization/precache-manifest.8cc6ea1f3c8def7774777e207c97ea7a.js",
     "service-worker.js": "/energy-visualization/service-worker.js",
     "static/css/main.4d5ae986.chunk.css.map": "/energy-visualization/static/css/main.4d5ae986.chunk.css.map",
-    "static/js/2.ae3ad4f1.chunk.js.LICENSE.txt": "/energy-visualization/static/js/2.ae3ad4f1.chunk.js.LICENSE.txt"
+    "static/js/2.70c60d5a.chunk.js.LICENSE.txt": "/energy-visualization/static/js/2.70c60d5a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.493c6151.js",
-    "static/js/2.ae3ad4f1.chunk.js",
+    "static/js/2.70c60d5a.chunk.js",
     "static/css/main.4d5ae986.chunk.css",
-    "static/js/main.73845c5c.chunk.js"
+    "static/js/main.d01a5652.chunk.js"
   ]
 }
