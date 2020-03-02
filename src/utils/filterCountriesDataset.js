@@ -1,3 +1,5 @@
+import mapOrder from "./mapOrder";
+
 const filterCountriesDataset = (producersDataset, consumersDataset, currentYear, filterTop10Producers, filterTop10Consumers) => {
 
     let countriesToFilter = false;
@@ -18,11 +20,11 @@ const filterCountriesDataset = (producersDataset, consumersDataset, currentYear,
     }
 
     let filteredProducersDataset = countriesToFilter
-        ? producersDataset.filter(data => countriesToFilter.includes(data.country))
+        ? mapOrder(producersDataset.filter(data => countriesToFilter.includes(data.country)), countriesToFilter, 'country')
         : producersDataset;
 
     let filteredConsumersDataset = countriesToFilter
-        ? consumersDataset.filter(data => countriesToFilter.includes(data.country))
+        ? mapOrder(consumersDataset.filter(data => countriesToFilter.includes(data.country)), countriesToFilter, 'country')
         : consumersDataset;
 
     return {
