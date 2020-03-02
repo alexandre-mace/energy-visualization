@@ -29,7 +29,7 @@ function App() {
             if(a.capacity < b.capacity) { return 1; }
             if(a.capacity > b.capacity) { return -1; }
             return 0;
-        }).slice(0, 9)
+        }).slice(0, 10)
         : purifiedProductionData;
 
     const filteredConsumptionData = filterTop10
@@ -37,7 +37,7 @@ function App() {
             if(a.consumption < b.consumption) { return 1; }
             if(a.consumption > b.consumption) { return -1; }
             return 0;
-        }).slice(0, 9)
+        }).slice(0, 10)
         : purifiedConsumptionData;
 
     const handleFilterTop10Change = () => {
